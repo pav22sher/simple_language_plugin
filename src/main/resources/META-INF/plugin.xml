@@ -1,0 +1,122 @@
+<!--Файл конфигурации-->
+<idea-plugin>
+  <!--Уникальный идентификатор плагина-->
+  <id>org.intellij.sdk.language</id>
+  <!--имя плагина для пользователей-->
+  <name>SDK: Simple Language Sample</name>
+  <!--зависимости плагина-->
+  <depends>com.intellij.modules.platform</depends>
+  <depends>com.intellij.java</depends>
+  <!--описание плагина отображается на странице плагина-->
+  <description><![CDATA[Demonstrates how to add custom language support to an IntelliJ Platform-based IDE.]]></description>
+  <!--имя поставщика или идентификатор организации-->
+  <vendor url="https://plugins.jetbrains.com">IntelliJ Platform SDK</vendor>
+
+  <!--расширения плагина (defaultExtensionNs - пространство имен)-->
+  <!--com.intellij - пространство имен используется, когда плагин реализует расширения платформы IntelliJ-->
+  <extensions defaultExtensionNs="com.intellij">
+    <!--тип файла-->
+    <fileType
+            name="Simple File"
+            implementationClass="org.intellij.sdk.language.step1.SimpleFileType"
+            fieldName="INSTANCE"
+            language="Simple"
+            extensions="simple"
+    />
+    <!--парсер-->
+    <lang.parserDefinition
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.SimpleParserDefinition"
+    />
+    <!--подсветка синтаксиса-->
+    <lang.syntaxHighlighterFactory
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step4.SimpleSyntaxHighlighterFactory"
+    />
+    <!--страница настройки подсветки синтаксиса-->
+    <colorSettingsPage
+            implementation="org.intellij.sdk.language.step4.SimpleColorSettingsPage"
+    />
+    <!--Выделить и аннотировать код-->
+    <annotator
+            language="JAVA"
+            implementationClass="org.intellij.sdk.language.step5.SimpleAnnotator"
+    />
+    <!--Линейные маркеры - иконка на полях-->
+    <codeInsight.lineMarkerProvider
+            language="JAVA"
+            implementationClass="org.intellij.sdk.language.step6.SimpleLineMarkerProvider"
+    />
+    <!--завершение кода-->
+    <completion.contributor
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step6.SimpleCompletionContributor"
+    />
+    <!--предоставлять ссылки из элементов других языков, например, Java-->
+    <psi.referenceContributor
+            language="JAVA"
+            implementation="org.intellij.sdk.language.step7.SimpleReferenceContributor"
+    />
+    <!--поддержка рефакторинга-->
+    <lang.refactoringSupport
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step7.SimpleRefactoringSupportProvider"
+    />
+    <!--поиск использований-->
+    <lang.findUsagesProvider
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step7.SimpleFindUsagesProvider"
+    />
+    <!--правила сворачивания кода-->
+    <lang.foldingBuilder
+            language="JAVA"
+            implementationClass="org.intellij.sdk.language.step7.SimpleFoldingBuilder"
+    />
+    <!--иконка для элемента-->
+    <iconProvider
+            implementation="org.intellij.sdk.language.step8.SimplePropertyIconProvider"
+    />
+    <!--Перехода к символу-->
+    <gotoSymbolContributor
+            implementation="org.intellij.sdk.language.step8.SimpleChooseByNameContributor"
+    />
+    <!--Структура представления-->
+    <lang.psiStructureViewFactory
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step9.SimpleStructureViewFactory"
+    />
+    <!--Панель навигации с учетом структуры-->
+    <navbar
+            implementation="org.intellij.sdk.language.step9.SimpleStructureAwareNavbar"
+    />
+    <!--Модель форматирования-->
+    <lang.formatter
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step10.SimpleFormattingModelBuilder"
+    />
+    <!--Настроек стиля кода-->
+    <codeStyleSettingsProvider
+            implementation="org.intellij.sdk.language.step11.SimpleCodeStyleSettingsProvider"
+    />
+    <!--Дополнительные настройки стиля-->
+    <langCodeStyleSettingsProvider
+            implementation="org.intellij.sdk.language.step11.SimpleLanguageCodeStyleSettingsProvider"
+    />
+    <!--комментатор кода-->
+    <lang.commenter
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step12.SimpleCommenter"
+    />
+    <!--документация к коду-->
+    <lang.documentationProvider
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step12.SimpleDocumentationProvider"
+    />
+    <!--проверка орфографии-->
+    <spellchecker.support
+            language="Simple"
+            implementationClass="org.intellij.sdk.language.step12.SimpleSpellcheckingStrategy"
+    />
+  </extensions>
+
+</idea-plugin>
